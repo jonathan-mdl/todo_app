@@ -9,9 +9,10 @@
         <% label :completed, class:'form-check-label', for:'todo.completed' %>
         <%= todo.description%> </div>
       <p class="card-text"><small class="text-muted">Last updated <%= todo.created_at %></small></p>
-      <%= link_to "Show", show_todos_path(todo) %>
-      <%= link_to "Edit", edit_todo_path(todo) %>
-      <%= link_to 'Delete', delete_todo_path(todo), method: :delete, data: { confirm: 'Estas seguro?' }%>
+      <%= link_to "Show", show_todos_path(todo), class: 'btn btn-info' %>
+      <%= link_to "Edit", edit_todo_path(todo), class: 'btn btn-info' %>
+      <%= link_to "Complete", complete_todo_path(todo), class: 'btn btn-info' %>
+      <%= link_to 'Delete', delete_todo_path(todo), method: :delete, data: { confirm: 'Estas seguro?' }, class: 'btn btn-danger'%>
 
 
     </div>
@@ -19,4 +20,3 @@
 <% end %>
 </div>
 <% end %>
-<%= link_to  "New", new_todo_path %>

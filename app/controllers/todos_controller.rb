@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-    before_action :set_todo, only: [:edit, :show, :update, :destroy]
+    before_action :set_todo, only: [:edit, :show, :update, :destroy, :complete]
     
     def index
     @todos = Todo.all
@@ -20,7 +20,6 @@ class TodosController < ApplicationController
     end
 
     def show 
-        @todo = Todo.find(params[:id])
     end
 
     def edit 
@@ -28,12 +27,22 @@ class TodosController < ApplicationController
 
     def update
         @todo.update(todo_params)
-        redirect_to todos_path, notice: 'El registro ha muerto.'
+        redirect_to todos_path
     end
 
     def destroy
         @todo.destroy
         redirect_to todos_path
+    end
+
+    def complete 
+        @todo.update_attributes(completed: true)
+        redirect_to todos_path
+    end
+
+    def list
+        @todo_completed = Todo.where(completed: true)   #trae todos los datos del modelo (recurso) Entries
+        @todo_uncompleted = Todo.where(completed: false)
     end
 
 

@@ -1,0 +1,31 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <h2>Completed</h2>
+      <%@todo_completed.each do |todo|%>
+                <tbody>
+                <ul>
+                    <li><%= todo.description %></li>
+                    <li> <%= link_to "Edit", edit_todo_path(todo), class: 'btn btn-info' %> <%= link_to 'Delete', delete_todo_path(todo), class: 'btn btn-danger', method: :delete, data: { confirm: 'Estas seguro?' }%></li>
+                </ul>
+                </tbody>
+            <% end %>
+    </div>
+    <div class="col">
+    <h2>Uncompleted</h2>
+
+      <%@todo_uncompleted.each do |todo|%>
+                <tbody>
+                <ul>
+                    <li><%= todo.description %></li>
+                    <li> <%= link_to "Edit", edit_todo_path(todo), class: 'btn btn-info' %> <%= link_to 'Delete', delete_todo_path(todo), class: 'btn btn-danger', method: :delete, data: { confirm: 'Estas seguro?' }%></li>
+                </ul>
+                </tbody>
+            <% end %>
+    </div>
+  </div>
+  </div>
+
+
+
