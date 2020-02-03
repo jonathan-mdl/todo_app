@@ -1,14 +1,22 @@
+<% @todos.each_slice(1) do |one_todo| %>
 <div class="card-deck">
-<% @todos.each do |todo| %>
+<% one_todo.each do |todo| %>
 
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title"><%= todo.completed%></h5>
-      <h5 class="card-text"><%= todo.description%></h5>
+      <div class="form-check">
+        <%= check_box_tag(:completed, todo.completed, todo.completed, disabled: true) %>
+        <% label :completed, class:'form-check-label', for:'todo.completed' %>
+        <%= todo.description%> </div>
       <p class="card-text"><small class="text-muted">Last updated <%= todo.created_at %></small></p>
+      <%= link_to "Show", show_todos_path(todo) %>
+      <%= link_to "Edit", edit_todo_path(todo) %>
+      <%= link_to 'Delete', delete_todo_path(todo), method: :delete, data: { confirm: 'Estas seguro?' }%>
+
+
     </div>
   </div>
 <% end %>
 </div>
-
+<% end %>
 <%= link_to  "New", new_todo_path %>
