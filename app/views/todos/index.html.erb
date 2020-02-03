@@ -1,0 +1,14 @@
+<div class="card-deck">
+<% @todos.each do |todo| %>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= todo.completed%></h5>
+      <h5 class="card-text"><%= todo.description%></h5>
+      <p class="card-text"><small class="text-muted">Last updated <%= todo.created_at %></small></p>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<%= link_to  "New", new_todo_path %>
